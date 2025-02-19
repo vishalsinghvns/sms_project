@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="Filters\SimpleAttribute.cs" />
     <Compile Include="GetIPName.cs" />
     <Compile Include="Global.asax.cs">
@@ -539,8 +540,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutPage.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
-    <Content Include="Views\Admin\UsersMaster.cshtml" />
-    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\UserMaster\AddUser.cshtml" />
+    <Content Include="Views\UserMaster\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

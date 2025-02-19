@@ -1,6 +1,6 @@
 ﻿@model demo.smart_school.Models.LoginModel
 @{
-    ViewBag.Title = "UsersMaster";
+    ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
@@ -20,13 +20,14 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h1 class="card-title mb-0 text-center text-danger text-uppercase">Users List</h1>
-                    <a href="~/Admin/AddUser" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                    <a href="~/UserMaster/AddUser" class="btn btn-primary"><i class="fa fa-plus"></i></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="file_export" class="table table-striped table-bordered display">
                             <thead class="bg-info">
                                 <tr>
+                                    <th class="text-white"></th>
                                     <th class="text-white">S. No.</th>
                                     <th class="text-white">Name</th>
                                     <th class="text-white">Email</th>
@@ -71,8 +72,8 @@
                                                     }
                                                 </td>
                                                 <td>
-                                                    <a href="@Url.Action("AddUser", "Admin", new { c_id = Item.id })" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-edit"></i></a>
-                                                    <a href="/Admin/DeleteUser?id=@Item.id" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you wish to delete this User ?');"><i class="fa fa-trash"></i></a>
+                                                    <a href="@Url.Action("AddUser", "UserMaster", new { c_id = Item.id })" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-edit"></i></a>
+                                                    <a href="/UserMaster/DeleteUser?id=@Item.id" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you wish to delete this User ?');"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             i = i + 1;

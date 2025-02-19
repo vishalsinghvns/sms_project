@@ -37,7 +37,7 @@
                     @*<div class="card-header bg-info">
                             <h4 class="mb-0 text-white">Add/Update Users</h4>
                         </div>*@
-                    @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { @encType = "multipart/form-data", @class = "bg" }))
+                    @using (Html.BeginForm("AddUser", "UserMaster", FormMethod.Post, new { @encType = "multipart/form-data", @class = "bg" }))
                     {
                         @Html.HiddenFor(x => x.Addusers.id)
                     <div class="card-body">
