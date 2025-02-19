@@ -131,10 +131,12 @@
     <Compile Include="Controllers\AddmissionEnquiryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentAdmissionController.cs" />
     <Compile Include="Controllers\UserMasterController.cs" />
-    <Compile Include="DAL\AdmissionEnquiryDAL.cs" />
-    <Compile Include="DAL\Connection.cs" />
-    <Compile Include="DAL\DeleteBulkDAL.cs" />
+    <Compile Include="DAL%28Data_Access_Layer\AdmissionEnquiryDAL.cs" />
+    <Compile Include="DAL%28Data_Access_Layer\Connection.cs" />
+    <Compile Include="DAL%28Data_Access_Layer\DeleteBulkDAL.cs" />
+    <Compile Include="DAL%28Data_Access_Layer\StudentAdmissionDAL.cs" />
     <Compile Include="Filters\SimpleAttribute.cs" />
     <Compile Include="GetIPName.cs" />
     <Compile Include="Global.asax.cs">
@@ -158,6 +160,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentAdmissionModel.cs" />
     <Compile Include="Models\tblAdmissionEnquiry.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -548,6 +551,7 @@
     <Content Include="Views\UserMaster\AddUser.cshtml" />
     <Content Include="Views\UserMaster\Users.cshtml" />
     <Content Include="Views\AdmissionEnquiry\Index.cshtml" />
+    <Content Include="Views\StudentAdmission\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

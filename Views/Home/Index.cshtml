@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="~/logo/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- SweetAlert2 CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
     <style>
         body {
             margin: 0;
@@ -155,7 +159,7 @@
                         <i class="fa fa-user"></i>
                         <input type="email" name="email" placeholder="Enter Your Email" required="">
                         <input type="password" name="password" placeholder="Enter Your Password" required="" autocomplete="off" autofocus="">
-                        @Html.ValidationSummary(true, "ERROR! The username or password is incorrect.", new { @class = "text-danger", @style = "color:red" })
+                        
                         <button> Sign in</button><br /><br />
                     </form>
 
@@ -166,3 +170,25 @@
     </div>
 </body>
 </html>
+@if (!ViewData.ModelState.IsValid)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'ERROR!',
+            text: 'The username or password is incorrect.',
+            confirmButtonText: 'OK'
+        });
+    </script>
+}
+else if (ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Login Failed!',
+            text: '@Html.Raw(Html.ValidationSummary(true))',
+            confirmButtonText: 'Try Again'
+        });
+    </script>
+}
