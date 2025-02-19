@@ -131,6 +131,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserMasterController.cs" />
+    <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\DeleteBulkDAL.cs" />
     <Compile Include="Filters\SimpleAttribute.cs" />
     <Compile Include="GetIPName.cs" />
     <Compile Include="Global.asax.cs">

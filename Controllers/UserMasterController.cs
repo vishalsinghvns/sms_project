@@ -16,8 +16,13 @@ namespace demo.smart_school.Controllers
         public class UserMasterController : Controller
         {
             Demo_smart_school_DbEntities db = new Demo_smart_school_DbEntities();
+        private readonly DeleteBulkDAL _userRepository;
 
-            public ActionResult Users()
+        public UserMasterController()
+        {
+            _userRepository = new DeleteBulkDAL(); // Directly instantiate repository
+        }
+        public ActionResult Users()
             {
                 LoginModel model = new LoginModel();
                 List<LoginModel> lst = new List<LoginModel>();
@@ -250,5 +255,13 @@ namespace demo.smart_school.Controllers
                 }
                 return RedirectToAction(FormName, Controller);
             }
+
+        [HttpPost]
+        public JsonResult SoftDeleteBulkUsers(string userIds)
+        {
+            bool isDeleted = _userRepository.SoftDeleteBulkUsers(userIds);
+            return Json(new { success = isDeleted });
+        }
+
         }
     }
