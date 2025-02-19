@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Demo_smart_school_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Menus">
+          <Key>
+            <PropertyRef Name="mid" />
+          </Key>
+          <Property Name="mid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menu_name" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_SubMenu">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menu_id" Type="int" />
+          <Property Name="submenu_name" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_UserHasMenus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" />
+          <Property Name="m_id" Type="int" />
+          <Property Name="s_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tblAdmissionEnquiry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="email" Type="nvarchar" MaxLength="200" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="descri" Type="nvarchar(max)" />
+          <Property Name="note" Type="nvarchar(max)" />
+          <Property Name="date" Type="date" />
+          <Property Name="nextfdate" Type="date" />
+          <Property Name="assigned" Type="nvarchar" MaxLength="100" />
+          <Property Name="reference" Type="nvarchar" MaxLength="100" />
+          <Property Name="sourc" Type="nvarchar" MaxLength="100" />
+          <Property Name="classs" Type="nvarchar" MaxLength="50" />
+          <Property Name="noofchild" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblSuperuser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="200" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="isDeleted" Type="bit" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" />
+          <Property Name="ipname" Type="nvarchar" MaxLength="100" />
+          <Property Name="ipadd" Type="nvarchar" MaxLength="100" />
+          <Property Name="logindate" Type="nvarchar" MaxLength="50" />
+          <Property Name="isactive" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="Demo_smart_school_DbModelStoreContainer">
+          <EntitySet Name="tbl_Menus" EntityType="Self.tbl_Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SubMenu" EntityType="Self.tbl_SubMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserHasMenus" EntityType="Self.tbl_UserHasMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdmissionEnquiry" EntityType="Self.tblAdmissionEnquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSuperuser" EntityType="Self.tblSuperuser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Demo_smart_school_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Demo_smart_school_DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAdmissionEnquiries" EntityType="Demo_smart_school_DbModel.tblAdmissionEnquiry" />
+          <EntitySet Name="tbl_Menus" EntityType="Demo_smart_school_DbModel.tbl_Menus" />
+          <EntitySet Name="tbl_SubMenu" EntityType="Demo_smart_school_DbModel.tbl_SubMenu" />
+          <EntitySet Name="tbl_UserHasMenus" EntityType="Demo_smart_school_DbModel.tbl_UserHasMenus" />
+          <EntitySet Name="tblSuperusers" EntityType="Demo_smart_school_DbModel.tblSuperuser" />
+        </EntityContainer>
+        <EntityType Name="tblAdmissionEnquiry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="descri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="nextfdate" Type="DateTime" Precision="0" />
+          <Property Name="assigned" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="reference" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="sourc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="classs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noofchild" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_Menus">
+          <Key>
+            <PropertyRef Name="mid" />
+          </Key>
+          <Property Name="mid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menu_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_SubMenu">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menu_id" Type="Int32" />
+          <Property Name="submenu_name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_UserHasMenus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="m_id" Type="Int32" />
+          <Property Name="s_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblSuperuser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ipname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ipadd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="logindate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Demo_smart_school_DbModelStoreContainer" CdmEntityContainer="Demo_smart_school_DbEntities">
+          <EntitySetMapping Name="tblAdmissionEnquiries">
+            <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tblAdmissionEnquiry">
+              <MappingFragment StoreEntitySet="tblAdmissionEnquiry">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="noofchild" ColumnName="noofchild" />
+                <ScalarProperty Name="classs" ColumnName="classs" />
+                <ScalarProperty Name="sourc" ColumnName="sourc" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="assigned" ColumnName="assigned" />
+                <ScalarProperty Name="nextfdate" ColumnName="nextfdate" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="descri" ColumnName="descri" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Menus">
+            <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tbl_Menus">
+              <MappingFragment StoreEntitySet="tbl_Menus">
+                <ScalarProperty Name="menu_name" ColumnName="menu_name" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SubMenu">
+            <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tbl_SubMenu">
+              <MappingFragment StoreEntitySet="tbl_SubMenu">
+                <ScalarProperty Name="submenu_name" ColumnName="submenu_name" />
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserHasMenus">
+            <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tbl_UserHasMenus">
+              <MappingFragment StoreEntitySet="tbl_UserHasMenus">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="m_id" ColumnName="m_id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSuperusers">
+            <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tblSuperuser">
+              <MappingFragment StoreEntitySet="tblSuperuser">
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="logindate" ColumnName="logindate" />
+                <ScalarProperty Name="ipadd" ColumnName="ipadd" />
+                <ScalarProperty Name="ipname" ColumnName="ipname" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

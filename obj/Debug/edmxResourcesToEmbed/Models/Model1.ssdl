@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Demo_smart_school_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Menus">
+    <Key>
+      <PropertyRef Name="mid" />
+    </Key>
+    <Property Name="mid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menu_name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tbl_SubMenu">
+    <Key>
+      <PropertyRef Name="sid" />
+    </Key>
+    <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menu_id" Type="int" />
+    <Property Name="submenu_name" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tbl_UserHasMenus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="m_id" Type="int" />
+    <Property Name="s_id" Type="int" />
+  </EntityType>
+  <EntityType Name="tblAdmissionEnquiry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="nvarchar" MaxLength="10" />
+    <Property Name="email" Type="nvarchar" MaxLength="200" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="descri" Type="nvarchar(max)" />
+    <Property Name="note" Type="nvarchar(max)" />
+    <Property Name="date" Type="date" />
+    <Property Name="nextfdate" Type="date" />
+    <Property Name="assigned" Type="nvarchar" MaxLength="100" />
+    <Property Name="reference" Type="nvarchar" MaxLength="100" />
+    <Property Name="sourc" Type="nvarchar" MaxLength="100" />
+    <Property Name="classs" Type="nvarchar" MaxLength="50" />
+    <Property Name="noofchild" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblSuperuser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="200" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="isDeleted" Type="bit" />
+    <Property Name="role" Type="nvarchar" MaxLength="50" />
+    <Property Name="ipname" Type="nvarchar" MaxLength="100" />
+    <Property Name="ipadd" Type="nvarchar" MaxLength="100" />
+    <Property Name="logindate" Type="nvarchar" MaxLength="50" />
+    <Property Name="isactive" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="Demo_smart_school_DbModelStoreContainer">
+    <EntitySet Name="tbl_Menus" EntityType="Self.tbl_Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SubMenu" EntityType="Self.tbl_SubMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UserHasMenus" EntityType="Self.tbl_UserHasMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAdmissionEnquiry" EntityType="Self.tblAdmissionEnquiry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSuperuser" EntityType="Self.tblSuperuser" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,121 @@
+﻿@model demo.smart_school.Models.UserModel
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+@if (Model.Addusers != null)
+{
+    <script>
+    $(document).ready(function () {
+        myFunction(@Model.Addusers.id)
+    });
+    </script>
+}
+<style>
+    .bg {
+        background: #dde3e9;
+        padding: 15px;
+    }
+</style>
+<div style="margin-top:15%">
+    <div class="row page-titles">
+        <div class="col-md-12 col-12 align-self-center">
+            @*<ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="javascript:void(0)">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active">Add Users</li>
+                </ol>*@
+            <h1 class="text-center text-danger text-uppercase">Add Users</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    @*<div class="card-header bg-info">
+                            <h4 class="mb-0 text-white">Add/Update Users</h4>
+                        </div>*@
+                    @using (Html.BeginForm("AddUser", "Admin", FormMethod.Post, new { @encType = "multipart/form-data", @class = "bg" }))
+                    {
+                        @Html.HiddenFor(x => x.Addusers.id)
+                    <div class="card-body">
+                        <div class="row pt-1">
+                            <div class="col-md-3 mb-3">
+                                <label>Name<i style="color:red">*</i></label>
+                                @Html.TextBoxFor(x => x.Addusers.fullname, new { @class = "form-control", @placeholder = "Username" })
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label>Email<i style="color:red">*</i></label>
+                                @Html.TextBoxFor(x => x.Addusers.email, new { @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            @*<div class="col-md-4 mb-3">
+                <label>Shop<i style="color:red">*</i></label>
+                @Html.DropDownListFor(x => x.Addusers.shopid, ViewBag.shop as SelectList, "--Select--", new { @class = "form-control select2-width-50", @required = "required"})
+            </div>*@
+                            <div class="col-md-3 mb-3">
+                                <label>Mobile No.<i style="color:red">*</i></label>
+                                @Html.TextBoxFor(x => x.Addusers.mobile, new { @class = "form-control", @placeholder = "Mobile No.", @required = "required" })
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label>Role<i style="color:red">*</i></label>
+                                @Html.TextBoxFor(x => x.Addusers.role, new { @class = "form-control", @placeholder = "Mobile No.", @required = "required" })
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label>Password<i style="color:red">*</i></label>
+                                @Html.TextBoxFor(x => x.Addusers.password, new { @type = "password", @class = "form-control", @placeholder = "password", @required = "required" })
+                                <br /> <br />
+                            </div>
+                        </div>
+
+                        <center><h4 class="card-title mt-30" style="margin-top:"> MENU PERMISSION</h4></center><hr />
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    @*<h4>Menus :</h4>*@
+                                    @foreach (var menulist in Model.Menuslist1)
+                                    {
+                                        <div class="col-lg-3">
+                                            <div class="col-lg-12 mb-1">
+                                                <input style="border:2px solid black" type="checkbox" name="Addusers.menuid_arr[]" id="userManagementReads_@menulist.mid" value="@menulist.mid" multiple="multiple"> @menulist.menu_name
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <br /><br />
+                            <center><button type="submit" class="btn btn-primary">Save</button></center>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myFunction(id) {
+        var ajaxCallURL = '../Admin/Getassingrole?id=' + id;
+        var options = { "backdrop": "static", keyboard: true };
+        $.ajax({
+            type: "GET",
+            url: ajaxCallURL,
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function (data) {
+                console.log(data);
+                for (var i in data) {
+                    $('#userManagementReads_' + data[i].mid).attr('checked', true);
+                }
+            },
+            error: function (ex) {
+            }
+        });
+    };
+</script>
+

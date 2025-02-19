@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Demo_smart_school_DbModelStoreContainer" CdmEntityContainer="Demo_smart_school_DbEntities">
+    <EntitySetMapping Name="tblAdmissionEnquiries">
+      <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tblAdmissionEnquiry">
+        <MappingFragment StoreEntitySet="tblAdmissionEnquiry">
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="noofchild" ColumnName="noofchild" />
+          <ScalarProperty Name="classs" ColumnName="classs" />
+          <ScalarProperty Name="sourc" ColumnName="sourc" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="assigned" ColumnName="assigned" />
+          <ScalarProperty Name="nextfdate" ColumnName="nextfdate" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="descri" ColumnName="descri" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Menus">
+      <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tbl_Menus">
+        <MappingFragment StoreEntitySet="tbl_Menus">
+          <ScalarProperty Name="menu_name" ColumnName="menu_name" />
+          <ScalarProperty Name="mid" ColumnName="mid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_SubMenu">
+      <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tbl_SubMenu">
+        <MappingFragment StoreEntitySet="tbl_SubMenu">
+          <ScalarProperty Name="submenu_name" ColumnName="submenu_name" />
+          <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+          <ScalarProperty Name="sid" ColumnName="sid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UserHasMenus">
+      <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tbl_UserHasMenus">
+        <MappingFragment StoreEntitySet="tbl_UserHasMenus">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="m_id" ColumnName="m_id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSuperusers">
+      <EntityTypeMapping TypeName="Demo_smart_school_DbModel.tblSuperuser">
+        <MappingFragment StoreEntitySet="tblSuperuser">
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="logindate" ColumnName="logindate" />
+          <ScalarProperty Name="ipadd" ColumnName="ipadd" />
+          <ScalarProperty Name="ipname" ColumnName="ipname" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

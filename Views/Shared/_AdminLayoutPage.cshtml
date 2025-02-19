@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Smart School Managment System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+</head>
+<body data-layout="horizontal" data-topbar="colored">
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar" style="background-image: url(/assets/images/hori-nav-bg.png)">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="~/assets/logo/ssss.PNG" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="~/assets/logo/ssss.PNG" alt="" height="18">
+                            </span>
+                        </a>
+
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="~/assets/logo/ssss.PNG" alt="" height="50">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="~/assets/logo/ssss.PNG" alt="" height="50">
+                            </span>
+                        </a>
+                    </div>
+
+                    <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="d-flex">
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="/assets/images/users/avatar-4.jpg"
+                                 alt="Header Avatar">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <!-- item-->
+                            <a class="dropdown-item" href="#"><i class="uil uil-user-circle font-size-16 align-middle text-muted mr-1"></i> <span class="align-middle" key="t-view"> View Profile</span></a>
+                            <a class="dropdown-item" href="/Home/Logout"><i class="uil uil-sign-out-alt font-size-16 align-middle mr-1 text-muted"></i> <span class="align-middle" key="t-sign-out"> Log out</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="topnav">
+                    <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+                        <div class="collapse navbar-collapse" id="topnav-menu-content">
+                            @{ 
+                                int?[] a = (int?[])Session["menu"];
+                                int?[] b = (int?[])Session["submenu"];
+                                                        <ul class="navbar-nav">
+                                                            @*<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle arrow-none" href="" id="topnav-pages" role="button"
+               data-toggle="" aria-haspopup="true" aria-expanded="false">
+                <i class="icon nav-icon" data-feather="home"></i>
+                <span key="t-dashboards">Dashboards</span> <div class=""></div>
+            </a>
+        </li>*@
+                                                            @if (a.Contains(1))
+                                                            {
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">Front Office</span> <div class="arrow-down"></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+
+                                                                        <a href="#" class="dropdown-item" key="t-alerts">Admission Enquiry</a>
+                                                                        <a href="#" class="dropdown-item" key="t-buttons">Visitor Book</a>
+                                                                        <a href="#" class="dropdown-item" key="t-cards">Phone Call Log</a>
+                                                                        <a href="#" class="dropdown-item" key="t-carousel">Postal Dispatch</a>
+                                                                        <a href="#" class="dropdown-item" key="t-dropdowns">Postal Receive</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Complain</a>
+                                                                    </div>
+                                                                </li>
+
+                                                            }
+                                                            @if (a.Contains(2))
+                                                            {
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">Users</span> <div class="arrow-down"></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+
+                                                                        <a href="/Admin/UsersMaster" class="dropdown-item" key="t-alerts">User</a>
+
+
+                                                                    </div>
+                                                                </li>
+
+
+
+                                                            }
+                                                            @if (a.Contains(3))
+                                                            {
+
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">Student Information</span> <div class="arrow-down"></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+
+                                                                        <a href="#" class="dropdown-item" key="t-alerts">Student Details</a>
+                                                                        <a href="#" class="dropdown-item" key="t-buttons">Student Admission</a>
+                                                                        <a href="#" class="dropdown-item" key="t-cards">Online Admission</a>
+                                                                        <a href="#" class="dropdown-item" key="t-carousel">Disabled Student</a>
+                                                                        <a href="#" class="dropdown-item" key="t-dropdowns">Multi Class Student</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Bulk Delete</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Student Categories</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Student House</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Disabled Reasion</a>
+                                                                    </div>
+                                                                </li>
+                                                            }
+                                                            @if (a.Contains(4))
+                                                            {
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">Fees Collection</span> <div class="arrow-down"></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                                                        <a href="#" class="dropdown-item" key="t-alerts">Collect Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-buttons">Offline Bank Payment</a>
+                                                                        <a href="#" class="dropdown-item" key="t-cards">Search Fees Payments</a>
+                                                                        <a href="#" class="dropdown-item" key="t-carousel">Search Due Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-dropdowns">Fees Master</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Group</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Type</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Discount</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Carry Forword</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Reminder</a>
+                                                                    </div>
+                                                                </li>
+                                                            }
+                                                            @if (a.Contains(5))
+                                                            {
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">Online Course</span> <div class="arrow-down"></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                                                        <a href="#" class="dropdown-item" key="t-alerts">Collect Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-buttons">Offline Bank Payment</a>
+                                                                        <a href="#" class="dropdown-item" key="t-cards">Search Fees Payments</a>
+                                                                        <a href="#" class="dropdown-item" key="t-carousel">Search Due Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-dropdowns">Fees Master</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Group</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Type</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Discount</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Carry Forword</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Reminder</a>
+                                                                    </div>
+                                                                </li>
+                                                            }
+                                                            @if (a.Contains(6))
+                                                            {
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">Multi Branch</span> <div class="arrow-down"></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                                                        <a href="#" class="dropdown-item" key="t-alerts">Collect Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-buttons">Offline Bank Payment</a>
+                                                                        <a href="#" class="dropdown-item" key="t-cards">Search Fees Payments</a>
+                                                                        <a href="#" class="dropdown-item" key="t-carousel">Search Due Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-dropdowns">Fees Master</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Group</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Type</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Discount</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Carry Forword</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Reminder</a>
+                                                                    </div>
+                                                                </li>
+                                                            }
+                                                            @if (a.Contains(7))
+                                                            {
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">Gmeet Live Classes</span> <div class="arrow-down"></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                                                        <a href="#" class="dropdown-item" key="t-alerts">Collect Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-buttons">Offline Bank Payment</a>
+                                                                        <a href="#" class="dropdown-item" key="t-cards">Search Fees Payments</a>
+                                                                        <a href="#" class="dropdown-item" key="t-carousel">Search Due Fees</a>
+                                                                        <a href="#" class="dropdown-item" key="t-dropdowns">Fees Master</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Group</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Type</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Discount</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Carry Forword</a>
+                                                                        <a href="#" class="dropdown-item" key="t-grid">Fees Reminder</a>
+                                                                    </div>
+                                                                </li>
+                                                            }
+                                                                <li class="nav-item dropdown">
+                                                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="icon nav-icon" data-feather="grid"></i>
+                                                                        <span key="t-apps">More...</span> <div class=""></div>
+                                                                    </a>
+                                                                    <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                                                                        <div class="dropdown">
+                                                                            
+                                                                            @if (a.Contains(8))
+                                                                            {
+                                                                                <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
+                                                                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                    <span key="t-email">Zoom Live Classes</span> <div class="arrow-down"></div>
+                                                                                </a>
+                                                                            }
+                                                                            </div>
+                                                                        <div class="dropdown">
+                                                                            <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-ecommerce"
+                                                                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                <span key="t-read-email">Behaiour Record</span> <div class="arrow-down"></div>
+                                                                            </a>
+                                                                            <div class="dropdown-menu" aria-labelledby="topnav-ecommerce">
+                                                                                <a href="ecommerce-products.html" class="dropdown-item" key="t-products">Products</a>
+                                                                                <a href="ecommerce-product-detail.html" class="dropdown-item" key="t-product-detail">Product Detail</a>
+                                                                                <a href="ecommerce-orders.html" class="dropdown-item" key="t-orders">Orders</a>
+                                                                                <a href="ecommerce-customers.html" class="dropdown-item" key="t-customers">Customers</a>
+                                                                                <a href="ecommerce-cart.html" class="dropdown-item" key="t-cart">Cart</a>
+                                                                                <a href="ecommerce-checkout.html" class="dropdown-item" key="t-checkout">Checkout</a>
+                                                                                <a href="ecommerce-shops.html" class="dropdown-item" key="t-shops">Shops</a>
+                                                                                <a href="ecommerce-add-product.html" class="dropdown-item" key="t-add-product">Add Product</a>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="dropdown">
+                                                                            <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-invoice"
+                                                                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                <span key="t-invoices">Invoices</span> <div class="arrow-down"></div>
+                                                                            </a>
+                                                                            <div class="dropdown-menu" aria-labelledby="topnav-invoice">
+                                                                                <a href="invoices-list.html" class="dropdown-item" key="t-invoice-list">Invoice List</a>
+                                                                                <a href="invoices-detail.html" class="dropdown-item" key="t-invoice-detail">Invoice Detail</a>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="dropdown">
+                                                                            <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-contact"
+                                                                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                <span key="t-contacts">Contacts</span> <div class="arrow-down"></div>
+                                                                            </a>
+                                                                            <div class="dropdown-menu" aria-labelledby="topnav-contact">
+                                                                                <a href="contacts-grid.html" class="dropdown-item" key="t-user-grid">User Grid</a>
+                                                                                <a href="contacts-list.html" class="dropdown-item" key="t-user-list">User List</a>
+                                                                                <a href="contacts-profile.html" class="dropdown-item" key="t-profile">Profile</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                }
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- JAVASCRIPT -->
+    <script src="/assets/libs/jquery/jquery.min.js"></script>
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="/assets/libs/node-waves/waves.min.js"></script>
+    <script src="/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="/assets/libs/feather-icons/feather.min.js"></script>
+
+    <!-- apexcharts -->
+    <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <script src="/assets/js/pages/dashboard.init.js"></script>
+
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>

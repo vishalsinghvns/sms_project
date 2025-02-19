@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#pricerange").ionRangeSlider({skin:"round",type:"double",grid:!0,min:0,max:1200,from:120,to:750,prefix:"$"})});
