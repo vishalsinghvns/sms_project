@@ -1,0 +1,143 @@
+﻿@model List<demo.smart_school.Models.AdmissionEnquiry>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<div style="margin-top:15%">
+    <div class="container-fluid">
+        @*<div class="page-titles">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="/Admin/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">User Master</a></li>
+                </ol>
+            </div>*@
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="container">
+                        <h2 class="text-center">Admission Enquiry Management</h2>
+
+                        <!-- Success Message -->
+                        @if (TempData["Message"] != null)
+                        {
+                            <div class="alert alert-success">@TempData["Message"]</div>
+                        }
+
+                        <!-- Add/Edit Enquiry Form -->
+                        <form id="enquiryForm" method="post" action="/AdmissionEnquiry/Save">
+                            <input type="hidden" id="Id" name="Id" value="0" />
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" id="Name" name="Name" class="form-control" required />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" id="Name" name="Name" class="form-control" required />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" id="Phone" name="Phone" class="form-control" required />
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-md-4">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="Email" name="Email" class="form-control" required />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" id="Address" name="Address" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-md-4">
+                                    <label class="form-label">Status</label>
+                                    <select id="Status" name="Status" class="form-control">
+                                        <option value="Pending">Pending</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Rejected">Rejected</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Follow-Up Date</label>
+                                    <input type="date" id="NextFollowUpDate" name="NextFollowUpDate" class="form-control" />
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mt-3">Save</button>
+                        </form>
+
+                        <hr />
+
+                        <!-- Display Enquiries in a Table -->
+                        <table class="table table-bordered mt-3">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var enquiry in Model)
+                                {
+                                    <tr>
+                                        <td>@enquiry.name</td>
+                                        <td>@enquiry.phone</td>
+                                        <td>@enquiry.email</td>
+                                        <td>@enquiry.status</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm edit-btn"
+                                                    data-id="@enquiry.id"
+                                                    data-name="@enquiry.name"
+                                                    data-phone="@enquiry.phone"
+                                                    data-email="@enquiry.email"
+                                                    data-address="@enquiry.address"
+                                                    data-status="@enquiry.status"
+                                                    data-nextfdate="@enquiry.nextfdate">
+                                                Edit
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm delete-btn" data-id="@enquiry.id">Delete</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- AJAX Script for Delete -->
+    <script>
+        $(document).ready(function () {
+            $(".delete-btn").click(function () {
+                var id = $(this).data("id");
+                if (confirm("Are you sure you want to delete this enquiry?")) {
+                    $.post("/AdmissionEnquiry/Delete", { id: id }, function (response) {
+                        alert(response);
+                        location.reload();
+                    });
+                }
+            });
+
+            $(".edit-btn").click(function () {
+                $("#Id").val($(this).data("id"));
+                $("#Name").val($(this).data("name"));
+                $("#Phone").val($(this).data("phone"));
+                $("#Email").val($(this).data("email"));
+                $("#Address").val($(this).data("address"));
+                $("#Status").val($(this).data("status"));
+                $("#NextFollowUpDate").val($(this).data("nextfdate"));
+            });
+        });
+    </script>

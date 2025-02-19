@@ -18,10 +18,13 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+                <h1 class="card-title mb-0 text-center text-danger text-uppercase" style="font-size:30px">Users List</h1>
                 <div class="card-header d-flex justify-content-between">
-                    <h1 class="card-title mb-0 text-center text-danger text-uppercase">Users List</h1>
+                    <button id="deleteSelectedUsers" disabled>Delete Selected</button>
                     <a href="~/UserMaster/AddUser" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="file_export" class="table table-striped table-bordered display">
@@ -84,7 +87,6 @@
                             </tbody>
 
                         </table>
-                        <button id="deleteSelectedUsers" disabled>Soft Delete Selected</button>
                     </div>
                 </div>
             </div>
@@ -161,9 +163,9 @@
         // Function to enable/disable delete button
         function toggleDeleteButton() {
             if ($(".user-checkbox:checked").length > 0) {
-                $("#deleteSelectedUsers").prop("disabled", false);
+                $("#deleteSelectedUsers").prop("disabled", false).css({ "border-color": "red", "cursor": "pointer", "background": "red", "border": "1px solid red","color":"#ffffff","border-radius":"5px" });
             } else {
-                $("#deleteSelectedUsers").prop("disabled", true);
+                $("#deleteSelectedUsers").css({ "border-color": "gray", "cursor": "not-allowed", "background": "gray", "border": "1px solid gray", "color": "black", "border-radius": "0px"}).prop("disabled", true);
             }
         }
 
@@ -190,18 +192,18 @@
 
             // If all checkboxes are checked, check "Select All" checkbox
             if ($(".user-checkbox:checked").length === $(".user-checkbox").length) {
-                $("#selectAll").prop("checked", true);
+                $("#selectAll").prop("checked", true).css({ "border-color": "gray", "cursor": "not-allowed", "background": "gray", "border": "1px solid gray", "color": "black", "border-radius": "0px" });
             } else {
-                $("#selectAll").prop("checked", false);
+                $("#selectAll").prop("checked", false).css({ "border-color": "red", "cursor": "pointer", "background": "red", "border": "1px solid red", "color": "#ffffff", "border-radius": "5px" });
             }
         });
 
         // Function to enable/disable delete button
         function toggleDeleteButton() {
             if ($(".user-checkbox:checked").length > 0) {
-                $("#deleteSelectedUsers").prop("disabled", false);
+                $("#deleteSelectedUsers").prop("disabled", false).css({ "border-color": "red", "cursor": "pointer", "background": "red", "border": "1px solid red", "color": "#ffffff", "border-radius": "5px" });
             } else {
-                $("#deleteSelectedUsers").prop("disabled", true);
+                $("#deleteSelectedUsers").prop("disabled", true).css({ "border-color": "gray", "cursor": "not-allowed", "background": "gray", "border": "1px solid gray", "color": "black", "border-radius": "0px" });
             }
         }
     });

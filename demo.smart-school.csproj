@@ -128,9 +128,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddmissionEnquiryController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserMasterController.cs" />
+    <Compile Include="DAL\AdmissionEnquiryDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\DeleteBulkDAL.cs" />
     <Compile Include="Filters\SimpleAttribute.cs" />
@@ -527,6 +529,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Script_function\script.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -544,9 +547,11 @@
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\UserMaster\AddUser.cshtml" />
     <Content Include="Views\UserMaster\Users.cshtml" />
+    <Content Include="Views\AdmissionEnquiry\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AddmissionEnquiry\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
