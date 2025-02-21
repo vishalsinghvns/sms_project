@@ -137,6 +137,7 @@
     <Compile Include="DAL%28Data_Access_Layer\Connection.cs" />
     <Compile Include="DAL%28Data_Access_Layer\DeleteBulkDAL.cs" />
     <Compile Include="DAL%28Data_Access_Layer\StudentAdmissionDAL.cs" />
+    <Compile Include="DAL%28Data_Access_Layer\StudentDeleteBulkDAL.cs" />
     <Compile Include="Filters\SimpleAttribute.cs" />
     <Compile Include="GetIPName.cs" />
     <Compile Include="Global.asax.cs">
@@ -552,6 +553,10 @@
     <Content Include="Views\UserMaster\Users.cshtml" />
     <Content Include="Views\AdmissionEnquiry\Index.cshtml" />
     <Content Include="Views\StudentAdmission\Index.cshtml" />
+    <Content Include="Views\StudentAdmission\Admission.cshtml" />
+    <Content Include="Views\StudentAdmission\GetStudents.cshtml" />
+    <Content Include="Views\StudentAdmission\Edit.cshtml" />
+    <Content Include="Views\StudentAdmission\AdmissionForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

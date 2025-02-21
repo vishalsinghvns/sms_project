@@ -1,0 +1,245 @@
+﻿@model List<demo.smart_school.Models.StudentAdmission>
+@{
+    ViewBag.Title = "GetStudents";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<div style="margin-top:15%">
+
+    <div class="container-fluid">
+        @*<div class="page-titles">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="/Admin/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">User Master</a></li>
+                </ol>
+            </div>*@
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    <h1 class="card-title mb-0 text-center text-danger text-uppercase" style="font-size:30px">Student List</h1>
+                    <div class="card-header d-flex justify-content-between">
+                        <button id="deleteSelectedUsers" disabled>Delete Selected</button>
+                        @using (Html.BeginForm("SearchStudents", "StudentAdmission", FormMethod.Get))
+                        {
+                            <input type="text" name="name" placeholder="Enter Student Name" />
+                            <input type="text" name="className" placeholder="Enter Class" />
+                            <input type="text" name="section" placeholder="Enter Section" />
+                            <button type="submit">Search</button>}
+                        <a href="~/StudentAdmission/AdmissionForm" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="file_export" class="table table-striped table-bordered display">
+                                <thead class="bg-info">
+                                    <tr>
+                                        <th class="text-white"><input type="checkbox" id="selectAll"> Select All</th>
+                                        <th class="text-white">S. No.</th>
+                                        <th class="text-white">Student Id</th>
+                                        <th class="text-white">Roll No.</th>
+                                        @*<th class="text-white">Shop</th>*@
+                                        <th class="text-white">Name</th>
+                                        <th class="text-white">Class</th>
+                                        <th class="text-white">Section</th>
+                                        <th class="text-white">Status</th>
+                                        <th class="text-white">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model != null)
+                                        {
+                                            int i = 1;
+                                            foreach (var student in Model)
+                                            {
+                                                <tr>
+                                                    <td><input type="checkbox" class="user-checkbox" value="@student.Id"></td>
+                                                    <td>@i</td>
+                                                    <td style="color:red">@student.StudentID</td>
+                                                    <td>@student.RollNo</td>
+                                                    <td>@student.StudentName</td>
+                                                    <td>@student.Class</td>
+                                                    <td>@student.Section</td>
+                                                    <td>@student.Status</td>
+                                                    <td>
+                                                        <a href="/StudentAdmission/Delete?id=@student.Id" class="btn btn-warning shadow btn-xs sharp"><i class="fa fa-eye"></i></a>
+                                                        <a href="@Url.Action("AdmissionForm", "StudentAdmission", new { c_id = student.Id })" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-edit"></i></a>
+                                                        <a href="/StudentAdmission/Delete?id=@student.Id" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                    </td>
+
+                                                </tr>
+                                                i = i + 1;
+                                            }
+                                        }
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SweetAlert2 CSS & JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if (TempData["Message"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '@TempData["Message"]',
+            showConfirmButton: true
+        });
+    </script>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '@TempData["ErrorMessage"]',
+            showConfirmButton: true
+        });
+    </script>
+}
+else if (TempData["MessageNotFound"] != null)
+{
+<script>
+    $(document).ready(function () {
+        var message = '@TempData["MessageNotFound"]';
+        if (message) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops!',
+                text: message,
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            });
+        }
+    });
+</script>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#deleteSelectedUsers1").click(function () {
+            var selectedIds = $(".user-checkbox:checked").map(function () {
+                return $(this).val();
+            }).get();
+
+            if (selectedIds.length > 0) {
+                $.ajax({
+                    url: "/StudentAdmission/SoftDeleteBulkStudents",
+                    type: "POST",
+                    data: { userIds: selectedIds }, // Ensure it’s sent as an array
+                    beforeSend: function () {
+                        $("#deleteSelectedUsers").prop("disabled", true); // Disable button to prevent multiple clicks
+                    },
+                    success: function (response) {
+                        if (response.success === true) {
+                            alert("Users marked as deleted!");
+                            location.reload(); // Reload to reflect changes
+                        } else {
+                            alert("Error updating users.");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("An error occurred: " + error); // Handle unexpected errors
+                    },
+                    complete: function () {
+                        $("#deleteSelectedUsers").prop("disabled", false); // Re-enable button after request
+                    }
+                });
+            } else {
+                alert("Please select at least one user.");
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#deleteSelectedUsers").click(function () {
+            var selectedIds = $(".user-checkbox:checked").map(function () {
+                return $(this).val();
+            }).get().join(",");
+
+            if (selectedIds.length > 0) {
+                $.ajax({
+                    url: "/StudentAdmission/SoftDeleteBulkStudents",
+                    type: "POST",
+                    data: { userIds: selectedIds },
+                    success: function (response) {
+                        if (response.success == true) {
+                            alert("Error updating users.");
+                        } else {
+                            alert("Users marked as deleted!");
+                            location.reload();
+                        }
+                    }
+                });
+            } else {
+                alert("Please select at least one user.");
+            }
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        // Function to enable/disable delete button
+        function toggleDeleteButton() {
+            if ($(".user-checkbox:checked").length > 0) {
+                $("#deleteSelectedUsers").prop("disabled", false).css({ "border-color": "red", "cursor": "pointer", "background": "red", "border": "1px solid red", "color": "#ffffff", "border-radius": "5px" });
+            } else {
+                $("#deleteSelectedUsers").css({ "border-color": "gray", "cursor": "not-allowed", "background": "gray", "border": "1px solid gray", "color": "black", "border-radius": "0px" }).prop("disabled", true);
+            }
+        }
+
+        // Event listener for checkbox changes
+        $(".user-checkbox").change(function () {
+            toggleDeleteButton();
+        });
+
+        // Initial check in case of pre-selected items
+        toggleDeleteButton();
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Toggle checkboxes when "Select All" is clicked
+        $("#selectAll").change(function () {
+            $(".user-checkbox").prop("checked", $(this).prop("checked"));
+            toggleDeleteButton();
+        });
+
+        // Enable/disable delete button based on checkbox selection
+        $(".user-checkbox").change(function () {
+            toggleDeleteButton();
+
+            // If all checkboxes are checked, check "Select All" checkbox
+            if ($(".user-checkbox:checked").length === $(".user-checkbox").length) {
+                $("#selectAll").prop("checked", true).css({ "border-color": "gray", "cursor": "not-allowed", "background": "gray", "border": "1px solid gray", "color": "black", "border-radius": "0px" });
+            } else {
+                $("#selectAll").prop("checked", false).css({ "border-color": "red", "cursor": "pointer", "background": "red", "border": "1px solid red", "color": "#ffffff", "border-radius": "5px" });
+            }
+        });
+
+        // Function to enable/disable delete button
+        function toggleDeleteButton() {
+            if ($(".user-checkbox:checked").length > 0) {
+                $("#deleteSelectedUsers").prop("disabled", false).css({ "border-color": "red", "cursor": "pointer", "background": "red", "border": "1px solid red", "color": "#ffffff", "border-radius": "5px" });
+            } else {
+                $("#deleteSelectedUsers").prop("disabled", true).css({ "border-color": "gray", "cursor": "not-allowed", "background": "gray", "border": "1px solid gray", "color": "black", "border-radius": "0px" });
+            }
+        }
+    });
+</script>

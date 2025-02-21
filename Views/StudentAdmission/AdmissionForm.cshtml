@@ -1,0 +1,239 @@
+﻿
+
+@model demo.smart_school.Models.StudentAdmission
+@{
+    ViewBag.Title = "AdmissionForm";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+<div style="margin-top:15%">
+    <div class="container-fluid">
+        @*<div class="page-titles">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="/Admin/Index">Home</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">User Master</a></li>
+                </ol>
+            </div>*@
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="container">
+                        <h1 class="text-center text-danger">Student Admission Form<hr /> </h1>
+                        @using (Html.BeginForm("AdmissionForm", "StudentAdmission", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(model => model.Id)
+                            <h2 class="text-danger">Student Information <hr /></h2>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label">Student Name<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.StudentName, new { @class = "form-control", required = "required", placeholder = "Enter Name" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Dob, new { @class = "form-control", type = "date", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Gender<span class="text-danger">*</span></label>
+                                    @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Male", Value = "Male" },
+            new SelectListItem { Text = "Female", Value = "Female" }
+        }, "Select Gender", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Phone<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", required = "required", placeholder = "Enter Phone No." })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Email<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "required", placeholder = "Enter Email Id" })
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Class<span class="text-danger">*</span></label>
+                                    @Html.DropDownListFor(model => model.Class, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "10", Value = "10" },
+            new SelectListItem { Text = "12", Value = "12" }
+        }, "Select Gender", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Section<span class="text-danger">*</span></label>
+                                    @Html.DropDownListFor(model => model.Section, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "A", Value = "A" },
+            new SelectListItem { Text = "B", Value = "B" }
+        }, "Select Section", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Blood Group</label>
+                                    @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "A", Value = "A" },
+            new SelectListItem { Text = "B", Value = "B" }
+        }, "Select Blood Group", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Natianality<span class="text-danger">*</span></label>
+                                    @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Indian", Value = "Indian" }
+        }, "Select Natianality", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Adhar No.<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Religion<span class="text-danger">*</span></label>
+                                    @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Hindu", Value = "Hindu" }
+        }, "Select Religion", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Cast<span class="text-danger">*</span></label>
+                                    @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "OBC", Value = "OBC" }
+        }, "Select Cast", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Belong To<span class="text-danger">*</span></label>
+                                    @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Rural Area", Value = "Rural Area" },
+            new SelectListItem { Text = "Urban Area", Value = "Urban Area" }
+        }, "Select Belong ", new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Address<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", required = "required", placeholder = "Enter Address" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Pin Code<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", required = "required", placeholder = "Enter Address" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Distric<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", required = "required", placeholder = "Enter Address" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">State<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control", required = "required", placeholder = "Enter Address" })
+                                </div>
+                            </div>
+                            <br />
+                            <h2 class="text-danger">Previous Academic Record</h2>
+                            <div class="row mt-2">
+                                <div class="col-md-4">
+                                    <label class="form-label">Name Of The Previous School </label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", placeholder = "Enter Name Of The Previous School" })
+                                </div> 
+                                <div class="col-md-4">
+                                    <label class="form-label">Location </label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", placeholder = "Enter Location" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Class<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.ParentPhone, new { @class = "form-control", placeholder = "Enter Class" })
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Section</label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", placeholder = "Enter Section" })
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Years Of Study</label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", placeholder = "Enter Years Of Study" })
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Percent</label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", placeholder = "Enter Percenteg" })
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Grade</label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", placeholder = "Enter Grade" })
+                                </div>
+                            </div>
+                            <br />
+                            <h2 class="text-danger">Parent Information</h2>
+                            <div class="row mt-2">
+                                <div class="col-md-4">
+                                    <label class="form-label">Parent Name<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Parent Phone<span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.ParentPhone, new { @class = "form-control", required = "required" })
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Parent Adhaaar No.<span class="text-danger">*</span><span class="text-danger">*</span></label>
+                                    @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", required = "required" })
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <label class="form-label">Admission Date</label>
+                                    @Html.TextBoxFor(model => model.AdmissionDate, new { @class = "form-control", type = "date", required = "required", Value = DateTime.Now.ToString("yyyy-MM-dd") })
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery Validation and AJAX Submission -->
+<script>
+    $(document).ready(function () {
+        $("#admissionForm").submit(function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                url: "/StudentAdmission/Save",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function (response) {
+                    alert("Student Admission Saved Successfully!");
+                    location.reload();
+                },
+                error: function () {
+                    alert("Error occurred while saving data.");
+                }
+            });
+        });
+    });
+</script>
+
+<!-- SweetAlert2 CSS & JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+@if (TempData["Message"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '@TempData["Message"]',
+            showConfirmButton: true
+        });
+    </script>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '@TempData["ErrorMessage"]',
+            showConfirmButton: true
+        });
+    </script>
+}
+
+
+

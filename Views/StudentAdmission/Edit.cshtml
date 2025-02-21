@@ -1,0 +1,87 @@
+﻿@model demo.smart_school.Models.StudentAdmission
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+
+<h2>Edit Student</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@using (Html.BeginForm("Edit", "StudentAdmission", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        <label>Student Name</label>
+        @Html.TextBoxFor(model => model.StudentName, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Date of Birth</label>
+        @Html.TextBoxFor(model => model.Dob, new { @class = "form-control", type = "date", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Gender</label>
+        @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Male", Value = "Male" },
+            new SelectListItem { Text = "Female", Value = "Female" }
+        }, "Select Gender", new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Phone</label>
+        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Admission Date</label>
+        @Html.TextBoxFor(model => model.AdmissionDate, new { @class = "form-control", type = "date", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Class</label>
+        @Html.TextBoxFor(model => model.Class, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Section</label>
+        @Html.TextBoxFor(model => model.Section, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Parent Name</label>
+        @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Parent Phone</label>
+        @Html.TextBoxFor(model => model.ParentPhone, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        @Html.TextBoxFor(model => model.Status, new { @class = "form-control", required = "required" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+}
+
+

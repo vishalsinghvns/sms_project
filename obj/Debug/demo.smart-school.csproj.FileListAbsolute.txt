@@ -163,4 +163,3 @@ C:\Users\engin\Documents\GitHub\sms_project\obj\Debug\demo.smart-school.csproj.C
 C:\Users\engin\Documents\GitHub\sms_project\obj\Debug\demo.smart-school.csproj.CopyComplete
 C:\Users\engin\Documents\GitHub\sms_project\obj\Debug\demo.smart-school.dll
 C:\Users\engin\Documents\GitHub\sms_project\obj\Debug\demo.smart-school.pdb
-C:\Users\engin\Documents\GitHub\sms_project\obj\Debug\demo.smart-school.csproj.AssemblyReference.cache

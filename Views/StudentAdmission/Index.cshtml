@@ -21,88 +21,92 @@
 
 
 
-                        <form id="admissionForm" method="post" action="/StudentAdmission/Save">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label">Student Name</label>
-                                    <input type="text" name="StudentName" class="form-control" required />
+                        
+                            @using (Html.BeginForm("Save", "StudentAdmission", FormMethod.Post))
+                            {
+                                @Html.HiddenFor(model => model.Id)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Student Name</label>
+                                        @Html.TextBoxFor(model => model.StudentName, new { @class = "form-control", required = "required" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Date of Birth</label>
+                                        @Html.TextBoxFor(model => model.Dob, new { @class = "form-control", required = "required" })
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Date of Birth</label>
-                                    <input type="date" name="Dob" class="form-control" required />
-                                </div>
-                            </div>
 
-                            <div class="row mt-2">
-                                <div class="col-md-6">
-                                    <label class="form-label">Gender</label>
-                                    <select name="Gender" class="form-control">
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Gender</label>
+                                        @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Male", Value = "Male" },
+                new SelectListItem { Text = "Female", Value = "Female" }
+            }, "Select Gender", new { @class = "form-control", required = "required" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Phone</label>
+                                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", required = "required" })
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Phone</label>
-                                    <input type="text" name="Phone" class="form-control" required />
-                                </div>
-                            </div>
 
-                            <div class="row mt-2">
-                                <div class="col-md-6">
-                                    <label class="form-label">Email</label>
-                                    <input type="email" name="Email" class="form-control" />
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email</label>
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "required" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Address</label>
+                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", required = "required" })
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Address</label>
-                                    <input type="text" name="Address" class="form-control" required />
-                                </div>
-                            </div>
 
-                            <div class="row mt-2">
-                                <div class="col-md-6">
-                                    <label class="form-label">Class</label>
-                                    <select name="Class" class="form-control">
-                                        <option value="10">Class 10</option>
-                                        <option value="12">Class 12</option>
-                                    </select>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Class</label>
+                                        @Html.DropDownListFor(model => model.Class, new List<SelectListItem>
+            {
+                new SelectListItem { Text = "10", Value = "10" },
+                new SelectListItem { Text = "12", Value = "12" }
+            }, "Select Gender", new { @class = "form-control", required = "required" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Section</label>
+                                        @Html.DropDownListFor(model => model.Section, new List<SelectListItem>
+            {
+                new SelectListItem { Text = "A", Value = "A" },
+                new SelectListItem { Text = "B", Value = "B" }
+            }, "Select Gender", new { @class = "form-control", required = "required" })
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Section</label>
-                                    <select name="Section" class="form-control">
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <div class="row mt-2">
-                                <div class="col-md-6">
-                                    <label class="form-label">Parent Name</label>
-                                    <input type="text" name="ParentName" class="form-control" required />
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Parent Name</label>
+                                        @Html.TextBoxFor(model => model.ParentName, new { @class = "form-control", required = "required" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Parent Phone</label>
+                                        @Html.TextBoxFor(model => model.ParentPhone, new { @class = "form-control", required = "required" })
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Parent Phone</label>
-                                    <input type="text" name="ParentPhone" class="form-control" required />
-                                </div>
-                            </div>
 
-                            <div class="row mt-2">
-                                <div class="col-md-6">
-                                    <label class="form-label">Status</label>
-                                    <select name="Status" class="form-control">
-                                        <option value="Pending">Pending</option>
-                                        <option value="Approved">Approved</option>
-                                        <option value="Rejected">Rejected</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Admission Date</label>
-                                    <input type="date" name="AdmissionDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly />
-                                </div>
-                            </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Status</label>
+                                        @Html.HiddenFor(model => model.Status, new { Value = "Active" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Admission Date</label>
+                                        <label>Admission Date</label>
+                                        @Html.TextBoxFor(model => model.AdmissionDate, new { @class = "form-control", type = "date", required = "required", Value = DateTime.Now.ToString("yyyy-MM-dd") })
 
-                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
-                        </form>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                            }
                     </div>
                 </div>
             </div>

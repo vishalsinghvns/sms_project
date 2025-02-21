@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace demo.smart_school.Controllers
 {
+    [Authorize]
     public class AdmissionEnquiryController : Controller
     {
         AdmissionEnquiryDAL _dal = new AdmissionEnquiryDAL();
@@ -24,7 +25,10 @@ namespace demo.smart_school.Controllers
             TempData["Message"] = message;
             return RedirectToAction("Index");
         }
-
+        public ActionResult Delete()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult Delete(int id)
         {
