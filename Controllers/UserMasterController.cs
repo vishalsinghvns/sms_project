@@ -137,7 +137,7 @@ namespace demo.smart_school.Controllers
                 var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, GenarateUserVerificationLink);
 
                 var fromMail = new MailAddress("vs7940095@gmail.com", "Send Login Email And Password"); // set your email
-                var fromEmailpassword = "ycob cyiy kkrt yaht"; // Set your password
+                var fromEmailpassword = "toez ntoo tqdw bvtr"; // Set your password
                 var toEmail = new MailAddress(model.Addusers.email);
                 var smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
